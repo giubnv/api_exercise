@@ -17,8 +17,8 @@ class BigQueryApi:
 
 
 if __name__ == '__main__':
-    credentials_path = 'pythongcp_privateKey.json'
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credentials_path
+    #credentials_path = 'pythongcp_privateKey.json'
+    #os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credentials_path
 
     bq_api = BigQueryApi()
     table_id = "training-gcp-309207.dataset_benevento.scontrini"

@@ -14,18 +14,23 @@ class GcsApi:
 
         # Verifica se il blob (file) esiste
         blob = bucket.blob(file_name)
+
         if blob.exists():
-            print(f"Il file {file_name} esiste nel bucket {bucket_name}.")
+            return True
         else:
-            print(f"Il file {file_name} non esiste nel bucket {bucket_name}.")
+            return None
 
 
 
 if __name__ == '__main__':
-    credentials_path = 'pythongcp_privateKey.json'
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credentials_path
+    #credentials_path = 'pythongcp_privateKey.json'
+    #os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credentials_path
 
     gcs_api = GcsApi()
     bucket_name = 'bucket_vitali'
     file_name = 'scontrini.csv'
-    gcs_api.check_file_exists(bucket_name, file_name)
+    res = gcs_api.check_file_exists(bucket_name, file_name)
+    if res:
+        print(f"Il file {file_name} esiste nel bucket {bucket_name}.")
+    else:
+        print(f"Il file {file_name} non esiste nel bucket {bucket_name}.")
